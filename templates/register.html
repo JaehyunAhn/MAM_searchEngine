@@ -1,0 +1,14 @@
+<html>
+	<body>
+		<p> current Dir: /mam/templates/register.html </p>
+		
+		<!-- Register Action -->
+		{{ state }}
+		<form action="/register_req/" method="post">{% csrf_token %}
+			username: <input type="text" name="username" value="{{ username }}"/> <br>
+			password1: <input type="password" name="password1" value="{{ password1 }}"/> <br>
+			password2: <input type="password" name="password2" value="{{ password2 }}"/> <br>
+			<input type="submit" value="Register"/>
+		</form>
+	</body>
+</html>

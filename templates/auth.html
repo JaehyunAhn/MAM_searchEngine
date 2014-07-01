@@ -1,0 +1,25 @@
+<html>
+	<body>
+		<p> current Dir: /mam/templates/auth.html </p>
+
+		{% if not username %}
+		{{ state }}
+		<!-- Login Action -->
+		<form action="/login/" method="post">{% csrf_token %}
+			username:
+			<input type="text" name="username" placeholder="name" value="{{ username }}" />
+			password:
+			<input type="password" name="password" placeholder="password"  value="{{ password }}"/>
+			<input type="submit" value="Login"/>
+			<!-- Register Action -->
+			<a href="../register/" target="_blank"><input type="button" value="Join"/></a>
+		</form>
+		<!-- Logged on -->
+		{% else %}
+		Hello, {{ username }}!
+		<a href="../logout/"><input type="button" value="Logout"/></a><br>
+		{% endif %}
+		{% block content %}
+		{% endblock %}
+	</body>
+</html>
