@@ -17,11 +17,11 @@ def login_user(request):
 		user = authenticate(username=username, password=password)
 		if user is not None:
 			login(request, user)
-			state = "Logged in!"
+			state = user.username + ' is logged on.'
 		else:
 			state = "Your username or password were incorrect."
 			username = ''
-	return render_to_response('search.html',{'state':state, 'username':username})
+	return render_to_response('search.html',{'state':state, 'user':user })
 
 @csrf_exempt
 def register_user(self):
@@ -29,8 +29,7 @@ def register_user(self):
 
 def logout_user(request):
 	logout(request)
-	username = ''
-	return render_to_response('search.html',{'username':username})
+	return render_to_response('search.html')
 
 @csrf_exempt
 def register_req(request):

@@ -5,15 +5,16 @@
 		<a href="/searchImage/">ImageSearch</a> | 
 		<a href="/searchText/">TextSearch</a> | 
 		<a href="/searchMovie/">MovieSearch</a> | 
-		<a href="/searchIntegrated/">IntegSearch</a> | 
-		{% if not username %}
+		<a href="/searchIntegrated/">IntegSearch</a> |
+		<!-- if there is no session : LOGIN -->
+		{% if not user.username %}
 		{{ state }}
 		<!-- Login Action -->
 		<form action="/login/" method="post" style="float:right;margin:0;">{% csrf_token %}
 			username:
-			<input type="text" name="username" placeholder="name" value="{{ username }}" size=10 />
+			<input type="text" name="username" placeholder="name" value="" size=10 />
 			password:
-			<input type="password" name="password" placeholder="password"  value="{{ password }}" size=10 />
+			<input type="password" name="password" placeholder="password"  value="" size=10 />
 			<input type="submit" value="Login"/>
 			<!-- Register Action -->
 			<a href="../register/" target="_blank"><input type="button" value="Join"/></a>
@@ -21,10 +22,12 @@
 		<br>
 		<!-- Logged on -->
 		{% else %}
+		{{ state }}
 		<div style="float:right;margin:0;">
-			Hello, {{ username }}!
+			Hello, {{ user.username }} !
 		<a href="../logout/"><input type="button" value="Logout"/></a><br>
 		</div>
+		<br>
 		{% endif %}
 		{% block content %}
 		{% endblock %}
