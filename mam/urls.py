@@ -18,4 +18,5 @@ urlpatterns = patterns('',
 	url(r'^searchText/$', 'search_action.views.textSearch'),
 	url(r'^searchMovie/$', 'search_action.views.movieSearch'),
 	url(r'^searchIntegrated/$', 'search_action.views.intgSearch'),
+	url(r'^upload_pic/$', 'search_action.views.upload_pic', name="upload_pic"),
 )

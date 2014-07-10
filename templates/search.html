@@ -6,11 +6,21 @@
 		<br>
 		Curret Dir: /mam/templates/search.html <br>
 		<br>
-		This is body
-		<form action="." method="post">{% csrf_token %}
-			<input type="text" name="inputField" value="{{ inputField }}" size=40 placeholder="Type your keyword"/>
-			<input type="button" value="Search"/>
+		<center>
+		I'm feeling lucky
+		<br>
+		<form action="/search/" method="post" style="display:inline;">{% csrf_token %}
+			<input type="text" name="inputField" 
+				value="" size=40 placeholder="Type your keyword"/>
+			<input type="submit" value="Search"/>
 		</form>
+		<form action="{% url "upload_pic" %}" 
+			method="post" enctype="multipart/form-data">{% csrf_token %}
+			<input id="id_image" type="file" name="file">
+			<input type="submit" value="Submit" />
+		</form>
+		{{ user.username }} searched: {{ query }}
+		</center>
 		{% endblock %}
 	</body>
 </html>
