@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
-
 from django.contrib import admin
+import settings
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -18,5 +19,8 @@ urlpatterns = patterns('',
 	url(r'^searchText/$', 'search_action.views.textSearch'),
 	url(r'^searchMovie/$', 'search_action.views.movieSearch'),
 	url(r'^searchIntegrated/$', 'search_action.views.intgSearch'),
-	url(r'^upload_pic/$', 'search_action.views.upload_pic', name="upload_pic"),
+	url(r'^upload_image/$', 'search_action.views.upload_image', name='upload_image'),
+	url(r'^upload_media/$', 'search_action.views.upload_media', name='upload_media'),
+	# Show Image
+	(r'^images/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.IMAGE_ROOT}),
 )

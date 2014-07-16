@@ -30,6 +30,9 @@ TEMPLATE_DIRS = (
 		'/Users/sogo/Desktop/internship/codes/mam/templates/',
 )
 
+IMAGE_ROOT = '/Users/sogo/Desktop/internship/codes/mam/images/'
+IMAGE_URL = 'images/'
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -39,7 +42,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'search_mam',
+	'search_mam', # this method used as 'syncdb'
+	'search_action',
 )
 
 MIDDLEWARE_CLASSES = (

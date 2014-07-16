@@ -14,12 +14,28 @@
 				value="" size=40 placeholder="Type your keyword"/>
 			<input type="submit" value="Search"/>
 		</form>
-		<form action="{% url "upload_pic" %}" 
-			method="post" enctype="multipart/form-data">{% csrf_token %}
+		<p>
+		Image Search
+		<form action="{% url "upload_image" %}" method="post"
+			style="display:inline;" enctype="multipart/form-data">{% csrf_token %}
 			<input id="id_image" type="file" name="file">
 			<input type="submit" value="Submit" />
 		</form>
+		</p>
+		<p>
+		Media Search
+		<form action="{% url "upload_media" %}" method="post"
+			style="display:inline;" enctype="multipart/form-data">{% csrf_token %}
+			<input id="id_media" type="file" name="file">
+			<input type="submit" value="Submit"  />
+		</form>
+		</p>
 		{{ user.username }} searched: {{ query }}
+			{% if img %}
+				<p>
+				<img border="0" alt="image search" src={{ img }} />
+				</p>
+			{% endif %}
 		</center>
 		{% endblock %}
 	</body>
