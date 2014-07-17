@@ -27,10 +27,10 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 TEMPLATE_DIRS = (
-		'/Users/sogo/Desktop/internship/codes/mam/templates/',
+		'/Users/sogo/Documents/Projects/14.7_AnT_internship/MAM_searchEngine/templates/',
 )
 
-IMAGE_ROOT = '/Users/sogo/Desktop/internship/codes/mam/images/'
+IMAGE_ROOT = '/Users/sogo/Documents/Projects/14.7_AnT_internship/MAM_searchEngine/images/',
 IMAGE_URL = 'images/'
 
 # Application definition

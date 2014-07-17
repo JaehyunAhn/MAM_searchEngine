@@ -13,7 +13,7 @@ from os.path import join
 def upload_media(request):
 	if request.method == 'POST':
 		if 'file' in request.FILES:
-			MEDIA_DIR = '/Users/sogo/Desktop/internship/codes/mam/media'
+			MEDIA_DIR = '/Users/sogo/Documents/Projects/14.7_AnT_internship/MAM_searchEngine/media/',
 			file = request.FILES['file']
 			filename = file._name
 			fp = open('%s/%s' % (MEDIA_DIR, filename), 'wb')
@@ -35,7 +35,7 @@ def upload_image(request):
 
 	if request.method == "POST":
 		if 'file' in request.FILES:
-			IMAGE_DIR = '/Users/sogo/Desktop/internship/codes/mam/images'
+			IMAGE_DIR = '/Users/sogo/Documents/Projects/14.7_AnT_internship/MAM_searchEngine/images/',
 			file = request.FILES['file']
 			filename = file._name
 			fp = open('%s/%s' % (IMAGE_DIR, filename), 'wb')
