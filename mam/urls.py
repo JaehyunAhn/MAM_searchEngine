@@ -1,14 +1,16 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-import settings
-
+from django.conf import settings
+import os.path
 admin.autodiscover()
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'mam.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+site_media = os.path.join(
+    os.path.dirname(__file__), '../site_media'
+)
 
+urlpatterns = patterns('',
+    # url patterns    
+    url(r'^$', 'search_mam.views.home'),
     url(r'^admin/', include(admin.site.urls)),
 	url(r'^login/$', 'search_mam.views.login_user'),
 	url(r'^logout/', 'search_mam.views.logout_user'),
@@ -22,5 +24,10 @@ urlpatterns = patterns('',
 	url(r'^upload_image/$', 'search_action.views.upload_image', name='upload_image'),
 	url(r'^upload_media/$', 'search_action.views.upload_media', name='upload_media'),
 	# Show Image
-	(r'^images/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.IMAGE_ROOT}),
+    url(r'^site_media/(?P<path>.*)$','django.views.static.serve',
+        { 'document_root':site_media,}),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': settings.MEDIA_ROOT,}),
+    url(r'^images/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': settings.IMAGE_ROOT}),
 )

@@ -35,7 +35,7 @@ def upload_image(request):
 
 	if request.method == "POST":
 		if 'file' in request.FILES:
-			IMAGE_DIR = '/Users/sogo/Documents/Projects/14.7_AnT_internship/MAM_searchEngine/images/',
+			IMAGE_DIR = '/Users/sogo/Documents/Projects/14.7_AnT_internship/MAM_searchEngine/images/'
 			file = request.FILES['file']
 			filename = file._name
 			fp = open('%s/%s' % (IMAGE_DIR, filename), 'wb')

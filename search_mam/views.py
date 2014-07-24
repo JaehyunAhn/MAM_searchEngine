@@ -1,10 +1,12 @@
+# /MAM_searchEngine/views.py
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 
-# Create your views here.
+def home(request):
+    return render_to_response('home.html')
 
 @csrf_exempt
 def login_user(request):
@@ -33,7 +35,7 @@ def logout_user(request):
 
 @csrf_exempt
 def register_req(request):
-	state = "There's something wrong. Please reload this page"
+	state = "Something wrong happened. Please reload this page"
 	username = password1 = password2 = ''
 	if request.POST:
 		username = request.POST.get('username')

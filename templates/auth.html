@@ -1,5 +1,14 @@
+<!-- header page -->
 <html>
+    <head>
+        <meta charset="utf-8">
+        {% load staticfiles %}
+        <script src="{% static "/site_media/bootstrap/js/bootstrap.js" %}"></script>
+        <link rel="stylesheet" href="{% static "/site_media/bootstrap/css/bootstrap.css" %}">
+    </head>
 	<body>
+        <div id="master-wrap">
+            <header class="nav-header">
 		<p> current Dir: /mam/templates/auth.html </p>
 		<a href="/search/">HOME</a> | 
 		<a href="/searchImage/">ImageSearch</a> | 
@@ -31,5 +40,7 @@
 		{% endif %}
 		{% block content %}
 		{% endblock %}
+            </header>
+        </div>
 	</body>
 </html>
