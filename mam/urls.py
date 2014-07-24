@@ -11,6 +11,9 @@ site_media = os.path.join(
 urlpatterns = patterns('',
     # url patterns    
     url(r'^$', 'search_mam.views.home'),
+    url(r'^genSearch/$','search_action.views.searchView'),
+    url(r'^loginSearch/$','search_mam.views.loginView'),
+
     url(r'^admin/', include(admin.site.urls)),
 	url(r'^login/$', 'search_mam.views.login_user'),
 	url(r'^logout/', 'search_mam.views.logout_user'),

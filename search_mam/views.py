@@ -1,9 +1,12 @@
-# /MAM_searchEngine/views.py
+# /MAM_searchEngine/search_mam/views.py
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
+
+def loginView(request):
+    return render_to_response('loginView.html')
 
 def home(request):
     return render_to_response('home.html')

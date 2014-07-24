@@ -1,7 +1,31 @@
 <html>
+    <head>
+        <meta charset="utf-8">
+        {% load staticfiles %}
+        <script src="{% static "/site_media/bootstrap/js/bootstrap.js" %}"></script>
+        <link rel="stylesheet" href="{% static "/site_media/bootstrap/css/bootstrap.css" %}">
+    </head>
     <title>
         MAM Search Engine
     </title>
     <body>
+        <div id="mainGuide" style="margin-left:40%;margin-top:10%;">
+            <img src="/images/mainLogo.jpg" width="300px">
+            <br>
+            <br>
+            <form method="get" action="/genSearch/" style="float:left;"> 
+                <input type="submit" value="일반검색" style="margin-left:74px;margin-right:10px;"/>
+            </form>
+            &nbsp;
+            <form method="get" action="/loginSearch/" style="float:left;">
+                <input type="submit" value="로그인검색"/>
+            </form>
+            <br>
+            <br>
+            <br>
+            <div style="margin-left:6%;">
+                이 용 약 관&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;  개인정보취급방침
+            </div>
+        </div>
     </body>
 </html>
