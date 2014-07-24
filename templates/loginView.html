@@ -1,6 +1,32 @@
 <html>
+    <head>
+        <meta charset="utf-8">
+        {% load staticfiles %}
+        <script src="{% static "/site_media/bootstrap/js/bootstrap.js" %}"></script>
+        <link rel="stylesheet" href="{% static "/site_media/bootstrap/css/bootstrap.css" %}">
+    </head>
     <title>
+        MAM 로그인
     </title>
     <body>
+        <div id="mainGuide" style="margin-left:39%;margin-top:10%;">
+            <img src="/images/mainLogo.jpg" width="300px">
+            <br>
+            <br>
+            <form action="/login/" method="post">{% csrf_token %}
+                &nbsp;&nbsp;&nbsp;아이디 &nbsp;&nbsp;: <input type="text" 
+                name="username" placeholder="아이디를 입력하세요" value="" size=8 />
+                <br>
+                &nbsp;&nbsp;&nbsp;비밀번호: <input type="password" name="password" 
+                placeholder="비밀번호" value="" size=8 />
+                <br>
+                <br>
+                <div id="buttons" style="margin-left:80px;">
+                    <input type="submit" value="로그인"/>&nbsp;&nbsp;
+                    <a href="../register/" 
+                        target="_blank"><input type="button" value="회원가입"></a>
+                </div>
+            </form>
+        </div>
     </body>
 </html>

@@ -12,8 +12,7 @@ urlpatterns = patterns('',
     # url patterns    
     url(r'^$', 'search_mam.views.home'),
     url(r'^genSearch/$','search_action.views.searchView'),
-    url(r'^loginSearch/$','search_mam.views.loginView'),
-
+    url(r'^loginView/$','search_mam.views.loginView'),
     url(r'^admin/', include(admin.site.urls)),
 	url(r'^login/$', 'search_mam.views.login_user'),
 	url(r'^logout/', 'search_mam.views.logout_user'),
@@ -33,4 +32,6 @@ urlpatterns = patterns('',
         {'document_root': settings.MEDIA_ROOT,}),
     url(r'^images/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': settings.IMAGE_ROOT}),
+
+    url(r'^searchDemo/$', 'search_action.views.Demo'),
 )

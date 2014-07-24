@@ -1,16 +1,69 @@
 <html>
-	<body>
-		<!-- extends are needed -->
-		{% extends "auth.html" %}
-		{% block content %}
-		<br>
-		Curret Dir: /mam/templates/intg_search.html <br>
-		<br>
-		This is body
-		<form action="." method="post">{% csrf_token %}
-			<input type="text" name="inputField" value="" size=40 placeholder="Type your keyword"/>
-			<input type="button" value="Search"/>
-		</form>
-		{% endblock %}
-	</body>
+    <title>
+        통합검색
+    </title>
+    <body>
+        <!-- extends are needed -->
+        {% extends "auth.html" %}
+        {% block content %}
+        <div id="contentWrapper">
+            <br>
+            <form action="." method="post" style="display:inline;">{% csrf_token %}
+                <input type="text" name="inputField" value="" placeholder="통합검색할 키워드를 입력하세요"/>
+                <input type="button" value="Search"/>
+            </form>
+            <!-- 스크립트:둘다나오는 오류있음-->
+            <script type="text/javascript"> 
+                function ViewLayer(){
+                    if(document.getElementById("imageSearch").style.display=="none"){
+                        document.getElementById("imageSearch").style.display='inline'
+                    }else{
+                        document.getElementById("imageSearch").style.display='none'
+                    }
+                }
+function PopLayer(){
+    if(document.getElementById("movSearch").style.display=="none"){
+        document.getElementById("movSearch").style.display='inline'
+    }else{
+        document.getElementById("movSearch").style.display='none'
+    }
+}
+</script>
+<img src="/images/imgSearchLogo.jpg" style='cursor:hand;' onclick="javascript:ViewLayer();" 
+border="0" align="absmiddle" style="float:left;" width="50px;"/>
+<img src="/images/movSearchLogo.jpg" style='cursor:hand;' onclick="javascript:PopLayer();" 
+border="0" align="absmiddle" style="float:left;" width="50px;"/>
+
+<div id="imageSearch" style='position:absolute; display:none; z-index:9999;'>
+    <form action="{% url "upload_image" %}" method="post"
+        style="display:inline;" enctype="multipart/form-data">{% csrf_token %}
+        <input id="id_image" type="file" name="file">
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+<div id="movSearch" style='position:absolute; display:none; z-index:9999;'>
+    <form action="{% url "upload_media" %}" method="post"
+        style="display:inline;" enctype="multipart/form-data">{% csrf_token %}
+        <input id="id_media" type="file" name="file">
+        <input type="submit" value="Submit"  />
+    </form>
+</div>
+        </div>
+
+        <p>
+        </p>
+        {% if query %}
+        &nbsp;&nbsp;{{ query }} 검색결과:
+        <hr>
+        <iframe src="/searchDemo" style="border:0;width:60%;height:80%;"></iframe>
+        {% else %}
+        {% endif %}
+        {% if img %}
+        <p>
+        <img border="0" alt="image search" src={{ img }} />
+        </p>
+        {% endif %}
+
+        {% endblock %}
+    </body>
 </html>

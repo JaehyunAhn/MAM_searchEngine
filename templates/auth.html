@@ -5,42 +5,66 @@
         {% load staticfiles %}
         <script src="{% static "/site_media/bootstrap/js/bootstrap.js" %}"></script>
         <link rel="stylesheet" href="{% static "/site_media/bootstrap/css/bootstrap.css" %}">
+        <link rel="stylesheet" href="{% static "/site_media/css/menuBar.css" %}">
+        <link rel="stylesheet" href="{% static "/site_media/css/searchContents.css" %}">
     </head>
-	<body>
-        <div id="master-wrap">
-            <header class="nav-header">
-		<p> current Dir: /mam/templates/auth.html </p>
-		<a href="/search/">HOME</a> | 
-		<a href="/searchImage/">ImageSearch</a> | 
-		<a href="/searchText/">TextSearch</a> | 
-		<a href="/searchMovie/">MovieSearch</a> | 
-		<a href="/searchIntegrated/">IntegSearch</a> |
-		<!-- if there is no session : LOGIN -->
-		{% if not user.username %}
-		{{ state }}
-		<!-- Login Action -->
-		<form action="/login/" method="post" style="float:right;margin:0;">{% csrf_token %}
-			username:
-			<input type="text" name="username" placeholder="name" value="" size=10 />
-			password:
-			<input type="password" name="password" placeholder="password"  value="" size=10 />
-			<input type="submit" value="Login"/>
-			<!-- Register Action -->
-			<a href="../register/" target="_blank"><input type="button" value="Join"/></a>
-		</form>
-		<br>
-		<!-- Logged on -->
-		{% else %}
-		{{ state }}
-		<div style="float:right;margin:0;">
-			Hello, {{ user.username }} !
-		<a href="../logout/"><input type="button" value="Logout"/></a><br>
-		</div>
-		<br>
-		{% endif %}
-		{% block content %}
-		{% endblock %}
-            </header>
+    <body>
+        <div id="headBar">
+            <a href="/"><font size="5em" color="#3c3c3c"><b>MAM</b> 검색서비스</font></a> 
+            <!-- if there is no session : LOGIN -->
+            {% if not user.username %}
+            <!--
+            <form action="/login/" method="post" style="float:right;margin:0;">{% csrf_token %}
+                username:
+                <input type="text" name="username" placeholder="name" value="" size=10 />
+                password:
+                <input type="password" name="password" placeholder="password"  value="" size=10 />
+                <input type="submit" value="Login"/>
+                <a href="../register/" target="_blank"><input type="button" value="Join"/></a>
+            </form>
+            -->
+            <!-- Logged on -->
         </div>
-	</body>
+            {% else %}
+            <div style="float:right;margin:0;">
+                안녕하세요, {{ user.username }}님!&nbsp;
+                <a href="../logout/"><input type="button" value="로그아웃"/></a><br>
+            </div>
+        </div>
+        {% endif %}
+        <div id="searchOptionSection">
+            <a href="/searchIntegrated/">
+                <div id="searchOption">
+                    <div id="textOption">
+                        통합검색
+                    </div>
+                </div>
+            </a>
+            <a href="/searchImage/">
+                <div id="searchOption">
+                    <div id="textOption">
+                        이미지검색
+                    </div>
+                </div>
+            </a>
+            <a href="/searchText/">
+                <div id="searchOption">
+                    <div id="textOption">
+                        텍스트검색
+                    </div>
+                </div>
+            </a>
+            <a href="/searchMovie/">
+                <div id="searchOption">
+                    <div id="textOption">
+                        동영상검색
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div id="contentSection">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
 </html>

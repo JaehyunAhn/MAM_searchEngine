@@ -1,14 +1,77 @@
 <html>
-	<body>
-		<p> current Dir: /mam/templates/register.html </p>
-		
-		<!-- Register Action -->
-		{{ state }}
-		<form action="/register_req/" method="post">{% csrf_token %}
-			username: <input type="text" name="username" value="{{ username }}"/> <br>
-			password1: <input type="password" name="password1" value="{{ password1 }}"/> <br>
-			password2: <input type="password" name="password2" value="{{ password2 }}"/> <br>
-			<input type="submit" value="Register"/>
-		</form>
-	</body>
+    <head>
+        <meta charset="utf-8">
+        {% load staticfiles %}
+        <script src="{% static "/site_media/bootstrap/js/bootstrap.js" %}"></script>
+        <link rel="stylesheet" href="{% static "/site_media/bootstrap/css/bootstrap.css" %}" >
+        <link rel="stylesheet" href="{% static "/site_media/css/register.css" %}" >
+    </head>
+    <title>
+        MAM 회원가입
+    </title>
+    <body>
+        <!-- Register Action -->
+        <div id="registerWindow" style="margin-left:40%;margin-top:8%;">
+            <img src="/images/mainLogo.jpg" width="280px">
+            <br>
+            <div style="margin-left:115px;">회원가입</div>
+            <br>
+            <form action="/register_req/" method="post">{% csrf_token %}
+                아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="username" value="{{ username }}" placeholder="아이디를 입력하세요"/> <br>
+                비밀번호 &nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="password" name="password1" value="{{ password1 }}"placeholder="비밀번호를 입력하세요" /> <br>
+                비밀번호확인 :  
+                <input type="password" name="password2" value="{{ password2 }}" placeholder="비밀번호 확인" /> <br>
+                성별 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                남 <input name="gender" type="radio" value="male"> 
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                여 <input name="gender" type="radio" value="female"> 
+                <br>
+                생년월일 &nbsp;:<br>
+                <div id="selectionWindow">
+                    <script language="javascript"> 
+                        var today = new Date(); 
+                        var toyear = parseInt(today.getYear()); 
+                        var start = toyear+1900; 
+                        var end = start - 70; 
+
+                        document.write("<font size=2><select name=birth1>"); 
+                                document.write("<option value='2014' selected>"); 
+                                for (i=start;i>=end;i--) document.write("<option>"+i); 
+                                document.write("</select>년  "); 
+
+                            document.write("<select name=birth2>"); 
+                                document.write("<option value='7' selected>"); 
+                                for (i=1;i<=12;i++) document.write("<option>"+i); 
+                                document.write("</select>월  "); 
+
+                            document.write("<select name=birth3>"); 
+                                document.write("<option value='25'>"); 
+                                for (i=1;i<=31;i++) document.write("<option>"+i); 
+                                document.write("</select>일  </font>");
+                    </script>
+                </div>
+                관심분야 &nbsp;:<br>
+                <div id="selectionWindow">
+                    <input name="intrArea" type="checkbox" value="관광"> 관광&nbsp;&nbsp;&nbsp;
+                    <input name="intrArea" type="checkbox" value="문화예술"> 문화예술
+                    <input name="intrArea" type="checkbox" value="경영"> 경영&nbsp;
+                    <br>
+                    <input name="intrArea" type="checkbox" value="교육"> 교육&nbsp;&nbsp;&nbsp;
+                    <input name="intrArea" type="checkbox" value="의료"> 의료&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input name="intrArea" type="checkbox" value="역사"> 역사
+                    <br>
+                    <input name="intrArea" type="checkbox" value="뉴스"> 뉴스&nbsp;&nbsp;&nbsp;
+                    <input name="intrArea" type="checkbox" value="과학"> 과학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input name="intrArea" type="checkbox" value="철학"> 철학
+                    <br>
+                    <br>
+                </div>
+                {{ state }}
+                <input type="submit" value="Register" style="margin-left:110px;"/>
+            </form>
+        </div>
+    </body>
 </html>
